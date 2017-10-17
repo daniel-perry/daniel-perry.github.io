@@ -1,0 +1,14 @@
+------------------------
+     Assignment #5 - Image 2 (cosine function, 9spp-jittered, tent filter)
+------------------------
+
+Programming language:   C++
+CPU(s):                 AMD Athlon(tm) 64 Processor 3000+
+Clock rate:             2.00 GHz
+Thread count:           1
+Third party libraries:  none
+Compiler:               g++ 3.4.2 
+Compiler flags:         -O4
+Setup/load time:        0.006091 seconds
+Render time:            3.85012  seconds
+Post-process time:      0.190154 seconds

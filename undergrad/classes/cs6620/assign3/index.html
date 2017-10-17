@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>danny perry - cs6620</title>
+</head>
+<body bgcolor="#333333" text="#ffffff" link="#3399ff" vlink="#3399ff" alink="#3399ff">
+<h3>CS 6620</h3>
+<b><i>Assignment 3:</i></b>
+<br><br>
+<i>assigned image 1 <a href="assign3_img1_perf.txt">[performance template]</a>:</i><br>
+<img src="assign3_img1.png">
+<br><br>
+<i>creative image:</i><br>
+<img src="assign3_img3.png"><br>
+<p>A dim yellow disk sun sets as, oh no! UFO's attack a small mountain
+community... wait, are they UFO's or flying pogo balls... either way looks
+pretty frightening...</p>
+<br><br>
+<i>Extra Credit terrain image:</i><br>
+<img src="assign3_img2.png"><br>
+<p>This was the terrain data that Thiago Ize and Mike Steffen were nice enough
+to share with everyone.(Thanks very much by the way.)</p>
+<br><br>
+<p>
+<i>Design Decisions:</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;For this assignment I've kept the same basic structure
+of my ray tracer, which consists of:<br>
+<i>Base Classes</i><br>
+<ul>
+<li>vector3d
+<li>hpoint
+<li>ray
+<li>image
+</ul>
+<i>Objects</i>
+<ul>
+<li>Object
+<ul>
+<li>Group
+<li>Primitive
+<ul>
+<li>Sphere
+<li>AxisBox
+<li>Triangle
+<li>Disk
+<li>Ring
+<li>HeightField
+</ul>
+</ul>
+</ul>
+<i>Other</i><br>
+The main loop of the array is in the same .cc file as the main() function.
+Scene description is still being done as object declarations in that same file, since I have not
+yet implemented a scene description parser or the like...<br>
+A normal scene will consiste of a Group object, to which different Primitive
+subclasses are added.  A std::vector or lights is created to hold the different
+lights, and is looped over in the main tracing loop.<br>
+This design was chosen so as to allow more time to spend on the assignment
+requirements, though later on I would like to implement a scene description parser
+and implement a World class to which I can add everything else, so that the
+code looks a little more neat.
+</p>
+
+<br><br><br>
+<a href="../../../index.html"><font color="#cc0000">[home]</font></a>
+&nbsp;:&nbsp;
+<a href="../index.html"><font color="#cc0000">[cs6620]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.utah.edu"><font color="#cc0000">[uu]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.cs.utah.edu"><font color="#cc0000">[cs]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.sci.utah.edu"><font color="#cc0000">[sci]</font></a>
+&nbsp;:&nbsp;
+<a href="mailto:dperry@cs.utah.edu"><font color="#cc0000">[email]</font></a>
+</body>
+</html>
+

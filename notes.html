@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>danny perry - notes</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="css/main.css" rel="stylesheet" type="text/css" media="screen"/>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35081386-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<style type="text/css">
+</style>
+
+</head>
+<body>
+
+<div class="container-narrow">
+
+  <div class="masthead">
+    <ul class="nav nav-pills pull-right">
+      <li><a href="index.html">about</a></li>
+      <li class="active"><a href="notes.html">notes</a></li>
+      <li><a href="https://scholar.google.com/citations?user=uva2_4wAAAAJ&hl=en">scholar</a></li>
+      <li><a href="https://github.com/daniel-perry">github</a></li>
+      <li><a href="http://images-and-data.blogspot.com">blog</a></li>
+     </ul>
+     <h1 class="muted">Danny Perry</h1>
+  </div>
+
+  <hr>
+
+
+  <h2>notes</h2>
+  <p id="subsubheading">some notes... potentially helpful.. no real organization yet.</p>
+
+
+  <div class="section">
+    <h3>[ssh-agent]</h3>
+    <h4>context</h4>
+    <p>
+    passwordless ssh is very useful, but to be a little more secure you usually want a passphrase on your private key.  
+    but it gets annoying to have to type in the passphrase everytime... enter ssh-agent.
+    </p>
+    <p>
+    however, apparently it's a bit of a trick to get it to work properly if you want to initialize it in .bashrc or the like.. 
+    Below is a bash script that will initialize things properly, and then re-use the existing ssh-agent if it's already running.  
+    As the comments in the script suggest, I got most of this somewwhere else, but had to modify it slightly to make it work for me... 
+    </p>
+
+    <h4>how-to</h4>
+    <p>
+    This took me a frustratingly long time to get right... maybe it will help someone else get there a little faster.
+    You should hopefully be able to just copy and paste this into your .bashrc.
+    </p>
+
+    <script src="https://gist.github.com/3251940.js"> </script>
+
+
+    <h4>ps</h4>
+    <p>
+    ssh-agent is how this normally done in linux (and cygwin).
+    On windows the <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">pageant</a> tool is a pretty simple way of accomplishing it.
+    Mac OS handles the passphrase storage for you automatically (using the keychain tool), no setup required.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>Generate an anisotropic, non-centered, non-axis aligned mulitivariate Gaussian data set</h3>
+    <h4>context</h4>
+    <p>
+	Sometimes it's useful to have a non-trivial but predictable random data set on which to test things.
+	It took a minute to put this together from various sources, so I thought I'd put it here for general use.
+    </p>
+    <p>
+      Among other things, this example includes how to 
+      <ul>
+        <li>Properly generate a multivariate sample by using the Cholesky decomposition of the covariance instead of the covariance.</li>
+      </ul>
+      <ul>
+        <li>How to generate a random d-dimensional rotation matrix.</li>
+      </ul>
+    </p>
+
+    <script src="https://gist.github.com/daniel-perry/8001fd06a39a4ca20129.js"></script>
+  </div>
+  <div class="section">
+  <h3>Random</h3>
+  <ul>
+    <li><a href="undergrad/index.html">old undergrad website</li>
+  </ul>
+  </div>
+
+  <hr>
+
+  <div class="footer">
+  <ul class="nav nav-pills pull-right">
+  <li><a href="http://www.utah.edu"><font color="#cc0000">uu</font></a></li>
+  <li><a href="http://www.cs.utah.edu"><font color="#cc0000">cs</font></a></li>
+  <li><a href="http://www.sci.utah.edu"><font color="#cc0000">sci</font></a></li>
+  <li><a href="mailto:dperry@cs.utah.edu"><font color="#cc0000">email</font></a></li>
+  </ul>
+  <p>Copyright &copy; Daniel Perry 2013-2016</p>
+  </div>
+
+</div> <!-- container -->
+
+<!-- placed at end so page loads faster -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/boostrap.min.js"></script>
+
+</body>
+</html>
+

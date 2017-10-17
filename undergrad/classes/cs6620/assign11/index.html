@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>danny perry - cs6620</title>
+</head>
+<body bgcolor="#333333" text="#ffffff" link="#3399ff" vlink="#3399ff" alink="#3399ff">
+<h3>CS 6620</h3>
+<b><i>Assignment 11:</i></b>
+<br>
+Final Project: Fractal Shrubbery
+<br><br>
+<i><b><u>final image:</u></b></i><br>
+<img src="finalimage.png">
+<br>
+Above: Final Image - Fractal Shrubbery.
+<br><br>
+<i><b><u>progressive images:</u></b></i><br>
+<img src="diseased_tree.png">
+<br>
+Above: a diseased fractal tree.
+<br>
+<img src="halftree.png">
+<br>
+Above: one permutation of the fractal tree
+<br>
+<img src="fulltree.png">
+<br>
+Above: another permutation of the fractal tree - looks a little more full.
+<br>
+<img src="shrubbery_less.png">
+<br>
+Above: attempts at grass.
+<br>
+<img src="shrubbery.png">
+<br>
+Above: more attempts at grass.
+<br>
+<br><br>
+<p>
+<i>Design Decisions:</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;I wanted to make something like the fractal trees shown in class, and in the paper references.  I didn't have enough time to really get it looking exactly like the paper, and here they don't look that real, but it looks kind of neat none the less.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;In order to creat fractal like images, I implemented a PrimitiveGroup class, to which I can apply instancing.  It seemed pretty sleek at first, until I ran into problems with way I was constructing my BVH... but after a while, it seems to have turned out okay.<br>
+
+</p><br><br>
+
+<i><b><u>Additional Functionality Images:</u></b></i><br>
+<img src="bvh_bad_bunny.png">
+<br>
+Above: I was having problems before with my BVH...
+<br>
+<img src="bvh_bunny.png">
+<br>
+Above: But, now it works.
+<br>
+<br>
+<img src="instance_groups.png">
+<br>
+Above: A simple test case for group instancing.
+<br>
+<br>
+<br>
+<img src="soft_shadow_original.png">
+<br>
+Above: What shadows look like point lights (hard border).
+<br>
+<img src="soft_shadow_1spp.png">
+<br>
+Above: Soft shadow using a square area light with 1 spp.
+<br>
+<img src="soft_shadow_100spp.png">
+<br>
+Above: Soft shadow with 100 spp.
+<br>
+<img src="soft_shadow_1000spp.png">
+<br>
+Above: Soft shadow with 1000 spp.
+<br><br>
+<p>
+<i>Design Decisions (continued):</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;In order to the final image I had to implement some more things, like soft shadows, and grouped instancing.  I also implemented some functionality I didn't get done in past assignments, like a working bvh.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;As stated above, to do group instancing, I created a GroupPrimitive class, which necessitated some changes to my BVH construction as well.  I was having a silly problem with my BVH, I wasn't testing both branches - just returning the first branch with a successfull hit.  For soft shadows, I implemented a new light subclass called AreaLight.  It acts more as a range for random point lights.  When I ask for the point and direction of the light source, the area light class returns a jittered distributed point light point, where all points have the same light color.  It would be cool to see what happens to vary the light color across the area of the light... maybe later.
+<br>
+
+</p>
+
+<br><br><br>
+<a href="../../../index.html"><font color="#cc0000">[home]</font></a>
+&nbsp;:&nbsp;
+<a href="../index.html"><font color="#cc0000">[cs6620]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.utah.edu"><font color="#cc0000">[uu]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.cs.utah.edu"><font color="#cc0000">[cs]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.sci.utah.edu"><font color="#cc0000">[sci]</font></a>
+&nbsp;:&nbsp;
+<a href="mailto:dperry@cs.utah.edu"><font color="#cc0000">[email]</font></a>
+</body>
+</html>
+

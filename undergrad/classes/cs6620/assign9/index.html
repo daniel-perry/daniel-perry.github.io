@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>danny perry - cs6620</title>
+</head>
+<body bgcolor="#333333" text="#ffffff" link="#3399ff" vlink="#3399ff" alink="#3399ff">
+<h3>CS 6620</h3>
+<b><i>Assignment 9:</i></b>
+<br><br>
+<i>creative image:</i><br>
+<img src="assign9_img1.png">
+<br>
+<p>A simple example of using the instancing class to rotate and translate the
+center brown box in 3 different ways.  The Top left box is just rotated and
+translated, the bottom left box is rotated, sheared, resized and translated, and
+the bottom right box is rotated, translated and resized.</p>
+<br><br>
+<p>
+<i>Design Decisions:</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;For this assignment, I implemented a new class called
+TInstance to handle the instancing.  I used a matrix class I wrote in a
+previous class to handle the rotation,resizing,shearing and translation math.  The class
+basically includes a pointer to the original object, the translation matrix,
+the inverse of the translation matrix, and a pointer to a new material class to use for shading.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The TInstance class also has different member functions
+to perform each type of translation: one for a Point, one for a Vector, and one
+for a Normal.  This type of design makes the interface clean, simple, and hard
+to mess up.  It was also recommended in Shirley's book.  The TInstance class is
+a subclass of my Primitive class, so that it can be treated like any other
+primitive in the system.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;One change I made to the system was to start
+using the scratchpad in my HitRecord.  I had evaded using it until now, but found it quite
+convenient to hold the hitpoint of the last intersected object, as opposed to
+trying to recalculate the t-value on the original ray from the translated ray's
+t-value.(this was because previousely for shading routines and the like, I had been simply
+recalculating the hit point from the t-value stored in the HitRecord).  I don't
+know if this will provide for headaches in the future, but it seemed to help
+out for this assignment.
+
+</p>
+
+<br><br><br>
+<a href="../../../index.html"><font color="#cc0000">[home]</font></a>
+&nbsp;:&nbsp;
+<a href="../index.html"><font color="#cc0000">[cs6620]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.utah.edu"><font color="#cc0000">[uu]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.cs.utah.edu"><font color="#cc0000">[cs]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.sci.utah.edu"><font color="#cc0000">[sci]</font></a>
+&nbsp;:&nbsp;
+<a href="mailto:dperry@cs.utah.edu"><font color="#cc0000">[email]</font></a>
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+------------------------
+     Assignment #4 - Image 1
+------------------------
+
+Programming language:   C++
+CPU(s):                 AMD Athlon(tm) 64 Processor 3000+
+Clock rate:             2.00 GHz
+Thread count:           1
+Third party libraries:  none
+Compiler:               g++ 3.4.2 
+Compiler flags:         -O4
+Setup/load time:        0.006906 seconds
+Render time:            4.61339  seconds
+Post-process time:      0.166284 seconds

@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>danny perry - cs6620</title>
+</head>
+<body bgcolor="#333333" text="#ffffff" link="#3399ff" vlink="#3399ff" alink="#3399ff">
+<h3>CS 6620</h3>
+<b><i>Assignment 5:</i></b>
+<br><br>
+<i>assigned images 1 and 2</i><br>
+<img src="assign5_img1.png">
+<img src="assign5_img1_b.png"><br>
+<p>No sampling or filtering done.</p>
+<br><br>
+<i>assigned images 3 and 4</i><br>
+<img src="assign5_img2.png">
+<img src="assign5_img2_b.png"><br>
+<p>Jittered Sampling at 9 samples per pixel using a Triangle Filter.<a
+href="assign5_img2_perf.txt">[performance template of sine function img]</a></p>
+<br><br>
+<i>assigned images 5 and 6</i><br>
+<img src="assign5_img3.png">
+<img src="assign5_img3_b.png">
+<br>
+<p>Jittered Sampling at 9 samples per pixel using a Gaussian Filter.</p>
+<br><br>
+<p>
+<i>Design Decisions:</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;So, for some reason, this assignment gave me a lot of
+trouble.  But, I finally got it working.  I implemented some more classes to
+handle the sampling and filtering:<br>
+<ul>
+<li>Filter
+<ul>
+<li>BoxFilter:Filter
+<li>TentFilter:Filter
+<li>GaussianFilter:Filter
+</ul>
+<li>Sample
+<ul>
+<li>UniformSample:Sample
+<li>JitteredSample:Sample
+</ul>
+</ul>
+&nbsp;&nbsp;&nbsp;&nbsp;I added pointers to a Filter and Sample class in my
+Scene class.  Where I actually do the sampling and filtering and all that jazz
+is actually in my Sample class.  In my Sample class I have a method sample(x,y)
+that samples and filters the pixel x,y of the image.  I call that function from
+my main rendering loop to get colors for each pixel.  However, I think putting
+that in the Sample classes wasn't a good move, because it really cause some
+troubles when I wanted to use a filter that covered more than one pixel.  For
+now I just check to see if the support is &gt; 1 and if so then I also sample the
+pixels around it and add them to the cumulative sample, which isn't a very
+slick way of doing it.  Especially if I ever wanted to sample out beyond the
+immediate surrounding pixels of the pixel being sampled, like for a filter with
+support &gt; 3, I would have to throw in another test and sample those pixels,
+which isn't elegant at all...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;What I was thinking of doing later on is move that sort
+of sample-pixel function to the filter classes, because then the filter would
+know how many samples it needs from the right number of pixels.  Either that or
+put it in my Scene class...  For now I guess I better focus more on finishing
+the rest of the assignments on time :).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;To do the function images, I put in some #ifdef and
+#define statements so that I can choose whether I want to trace the scene
+defined or use the defined function values to render the image.  It seemed a
+good way to do it, and didn't take a long time to do.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;I think the thing that I had the most problem with on
+this assignment was getting the space conversions right.  I had little errors
+in converting from pixel space ([0,0]x[xres,yres]), to image space
+([-1,-1]x[1,1]), to filter space (RxR).  But I think I have it under control now...
+</p>
+
+<br><br><br>
+<a href="../../../index.html"><font color="#cc0000">[home]</font></a>
+&nbsp;:&nbsp;
+<a href="../index.html"><font color="#cc0000">[cs6620]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.utah.edu"><font color="#cc0000">[uu]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.cs.utah.edu"><font color="#cc0000">[cs]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.sci.utah.edu"><font color="#cc0000">[sci]</font></a>
+&nbsp;:&nbsp;
+<a href="mailto:dperry@cs.utah.edu"><font color="#cc0000">[email]</font></a>
+</body>
+</html>
+

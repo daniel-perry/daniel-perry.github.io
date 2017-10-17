@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>danny perry - cs6620</title>
+</head>
+<body bgcolor="#333333" text="#ffffff" link="#3399ff" vlink="#3399ff" alink="#3399ff">
+<h3>CS 6620</h3>
+<b><i>Assignment 9:</i></b>
+<br>
+Monte Carlo Effects: Gloss/Fuzzy Reflections and Fuzzy Transparency (extra credit)
+<br><br>
+<i><b><u>creative images:</u></b></i><br>
+<img src="assign10_img1.png">
+<br>
+Above: Fuzzy reflection on three spheres, right is the most fuzzy, left is least fuzzy.
+<br>
+<img src="assign10_img2.png">
+<br>
+Above: Similar to first, but without phong highlight.
+<br>
+<img src="assign10_img3.png">
+<br>
+Above: Sphere on left has fuzzy reflection, sphere on right is normal phong material.
+<br>
+<p>These are just three simple examples of the glossy/fuzzy reflection material.  The "fuzziness" can be adjusted by changing the magnitude of the perturbation, which is what the first two images illustrate.  It can be done using the phong hightlight (first image) or without (second two).</p>
+<br><br>
+<p>
+<i>Design Decisions:</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;To create the fuzzy reflection material, I chose to modify the metal material class created previousely in the class.  It seemed to relate the most to what was needed.  The main change was to perturb the reflection ray, and add the ability to control the perturbation to get the desired effect.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;I haven't yet finished the path tracer, but by sampling at a high enough rate, it seems to yield a pretty good result.<br>
+
+</p><br><br>
+
+<i><b><u>Extra Credit Images:</u></b></i><br>
+<img src="assign10_img4.png">
+<br>
+Above: Looking through a dielectric material at a sphere <u>without</u> any fuzziness.
+<br>
+<img src="assign10_img5.png">
+<br>
+Above: Looking through a dielectric material at a sphere <u>with</u> fuzziness.
+<br>
+<img src="assign10_img6.png">
+<br>
+Above: Same image as above, but now with a glossy floor.  Not the most clever combination of effects, but it does look a little better.
+<br>
+<p>The upper two images illustrate what adding the fuzziness to the dielectric material does.  The third shows a combination of the glossy material (floor) with the fuzzy dielectric.  The first image is done without any perturbation to the transparency ray, while the one below it does.  By perturbing the dielectric it resembles a sort of foggy window.</p>
+<br><br>
+<p>
+<i>Design Decisions (continued):</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;To create the fuzzy dielectric material, I modified the original dielectric slightly.  The main change, as with the glossy material was to perturb the tranparency ray, and add in the ability to control how much to perturb it.  To get a decent image requires a lot of samples per pixel.  All the images above where sampled at 1000 jittered per pixel.  I don't know how tightly bound that is on the number needed for convergence, but they look pretty good.
+<br>
+
+</p>
+
+<br><br><br>
+<a href="../../../index.html"><font color="#cc0000">[home]</font></a>
+&nbsp;:&nbsp;
+<a href="../index.html"><font color="#cc0000">[cs6620]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.utah.edu"><font color="#cc0000">[uu]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.cs.utah.edu"><font color="#cc0000">[cs]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.sci.utah.edu"><font color="#cc0000">[sci]</font></a>
+&nbsp;:&nbsp;
+<a href="mailto:dperry@cs.utah.edu"><font color="#cc0000">[email]</font></a>
+</body>
+</html>
+

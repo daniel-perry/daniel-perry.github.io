@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>danny perry - cs6620</title>
+</head>
+<body bgcolor="#333333" text="#ffffff" link="#3399ff" vlink="#3399ff" alink="#3399ff">
+<h3>CS 6620</h3>
+<b><i>Assignment 4:</i></b>
+<br><br>
+<i>assigned image 1 <a href="assign4_img1_perf.txt">[performance template]</a>:</i><br>
+<img src="assign4_img1.png">
+<br><br>
+<i>creative image:</i><br>
+<img src="assign4_img2.png"><br>
+<p>This image is to show off the new material types implemented this round.
+Appearing for the first time are: two glass spheres, two phong spheres (gold
+and pink), a large metal sphere (at top), and the tip-top of a metal box (on
+bottom).  The rest of the floor is a purple Lambertian plain and a green phong
+disk (with the metal box centered in that).  Notice the reflection of all the
+spheres in the big sphere, and in the top of the box on the bottom.  Neat-o.</p>
+<br><br>
+<i>Extra Credit: coupled material implementation</i><br>
+<img src="coup_img1.png"><br>
+<p>Here are two spheres, the one on the left is purely Phong shaded, while the
+sphere on the right is shaded using the Coupled material (glossy surface).  Now
+I wasn't entirely sure how to check for correctness, but I thought it looked
+pretty good... Notice the blue reflections of the background on the edges of
+the sphere on the right.</p>
+<br><br>
+<img src="coup_img2.png"><br>
+<p>Same spheres, only now with a goldish surface color...</p>
+<br><br>
+<p>
+<i>Design Decisions:</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;For this assignment, I implemented 4 new Material
+classes, PhongMaterial, MetalMaterial, DielectricMaterial, and
+CoupledMaterial.  I was able to keep using the basic infrastructure already
+established with some changes this time.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Notably, several interfaces were overloaded to match the
+interface used in the req.h files (so that I can include them without having
+to change it).  This also required some typedef's so that my names like
+vector3d and rgb are understood as Vector and Color.  This made sense since now
+my interfaces match those given in assignments, whereas before they didn't
+(which is a pain).  I guess I'm a conformist.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;I had some trouble getting the transparent material
+working for a while there, because my box intersection code wasn't
+correct... somehow it slipped through the other assignments.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;For the reflection and transparent materials, I used
+schlicks approximation, for the obvious speed advantage, and they seem to look
+pretty good.  For the transparent material, I was getting really slow render
+times (about 39 seconds for the required image).  After implementing the "ray
+trimming" that time dropped considerably (for the required image, down to 4 seconds).  Althought still
+not ideal, it is at least reasonable.  If I have more time later on, I'd like
+to optimize more to get my rendering time down.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;This assignment seemed considerably less painfull than
+past assignments, though seemed to make the images appear much better.  Cool stuff...
+</p>
+
+<br><br><br>
+<a href="../../../index.html"><font color="#cc0000">[home]</font></a>
+&nbsp;:&nbsp;
+<a href="../index.html"><font color="#cc0000">[cs6620]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.utah.edu"><font color="#cc0000">[uu]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.cs.utah.edu"><font color="#cc0000">[cs]</font></a>
+&nbsp;:&nbsp;
+<a href="http://www.sci.utah.edu"><font color="#cc0000">[sci]</font></a>
+&nbsp;:&nbsp;
+<a href="mailto:dperry@cs.utah.edu"><font color="#cc0000">[email]</font></a>
+</body>
+</html>
+

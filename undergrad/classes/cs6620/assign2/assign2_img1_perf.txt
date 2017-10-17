@@ -1,0 +1,14 @@
+------------------------
+     Assignment #2 - Image 1
+------------------------
+
+Programming language:   C++
+CPU(s):                 Intel(R) Pentium(R) 4 CPU 
+Clock rate:             2.53 GHz
+Thread count:           1
+Third party libraries:  none
+Compiler:               g++ 3.2.2 
+Compiler flags:         -O3 -msse -msse2 -mfpmath=sse -march=pentium4
+Setup/load time:        0.009074 seconds
+Render time:            0.557601 seconds
+Post-process time:      1.67987 seconds
