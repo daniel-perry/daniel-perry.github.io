@@ -39,34 +39,21 @@
   <hr>
 
   <div class="jumbotron">
-<h2>Hello World!</h2><br/><h4>2020-12-31</h4>
+<!-- ARTICLE_HEADING -->
   </div>
 
   <div class="marketing">
 
     <div id="section">
 
-<h3>Starting again...</h3>
-
-<p>
-I have found in the past that writing about technical topics is a great way to internalize them.  I've decided to start again doing this via a blog.
-</p>
-<p>
-Rather than use a blogging service, this time I am using a static generator on my github pages.  
-To get started rather than figuring out a real static site generator, I have just cobbled together some python scripts, you're welcome to go take a look at them <a href="https://github.com/daniel-perry/daniel-perry.github.io/tree/master/blog">here</a>.
-</p>
-<p>
-Previous blog efforts can be found <a href="/class/index.html">here</a>, along with some grad school coursework links.
-</p>
-
-
+<!-- ARTICLE_CONTENT -->
 
     </div>
 
   </div> <!-- marketing -->
 
   <div class="jumbotron">
-<a href='articles/-1.html'>previous</a>
+<!-- ARTICLE_NAVIGATION -->
   </div>
 
   <hr>
