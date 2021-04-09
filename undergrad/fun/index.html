@@ -1,0 +1,160 @@
+<html>
+<head>
+<script language="javascript">
+var codes = [];
+for(var i=0; i<26; ++i) {
+  codes.push([String.fromCharCode(65+i), i+1]);
+}
+var codemap = new Map(codes);
+
+function primeFactors(n) {
+  const factors = [];
+  let divisor = 2;
+
+  while (n >= 2) {
+    if (n % divisor == 0) {
+      factors.push(divisor);
+      n = n / divisor;
+    } else {
+      divisor++;
+    }
+  }
+  return factors;
+}
+
+/** find a simple 1st grade math problem to result in the number.
+ */
+function makeProblem(num, useMult) {
+	if (useMult && Math.random() < 0.8) {
+		// multiplication/division
+		if (Math.random() < 0.5) {
+			// multiplication problem:
+			primeArray = primeFactors(num);
+			console.log(primeArray)
+			if (primeArray.length <= 1){
+				return "1 x " + num;
+			}
+			var index = Math.ceil(1 + Math.random() * (primeArray.length-1))
+			index = Math.min(primeArray.length-1, index)
+			var first = primeArray[0];
+			for (var i=1; i<index; i++) {
+				first = first * primeArray[i]
+			}
+			var second = num / first;
+			return first + " x " + second;
+		} else {
+			// division problem:
+			if (num < 10) {
+				var small = Math.ceil(1 + Math.random()*10);
+			} else {
+				var small = Math.ceil(1 + Math.random()*3);
+			}
+			var big = num * small;
+			return big + " / " + small;
+		}
+	} else {
+		// addition/subtraction
+		if (Math.random() < 0.5) {
+			// subtraction problem:
+			var big = Math.ceil(Math.random()*30);
+			if (big >= num) {
+				small = big - num;
+			} else {
+				small = num - big;
+				var tmp = small;
+				small = big;
+				big = tmp;
+			}
+			return big + " - " + small;
+		} else {
+			// addition problem:
+			var first = Math.ceil(Math.random()*num);
+			var second = num - first;
+		}
+	}
+	return first + " + " + second;
+}
+
+/** encode the text message as a series of 1st grade math problems
+ */
+function encode(message, useMult) {
+	var text = message.toUpperCase();
+	var encoded = [];
+	for(var i=0; i<text.length; ++i) {
+		if (text.charAt(i) == " ") {
+			encoded.push("&nbsp;");
+		} else {
+			var num = codemap.get(text.charAt(i));
+			var problem = makeProblem(num, useMult);
+			encoded.push(problem);
+		}
+	}
+	return encoded;
+}
+
+function process() {
+	var message = document.getElementById("input").value;
+	console.log("message: " + message);
+	var useMult = document.getElementById("mult").checked;
+	console.log("useMult: " + useMult);
+	var encoded = encode(message, useMult);
+	var table = document.getElementById("output");
+	for (var i=0; i<encoded.length; ++i) {
+		console.log(encoded[i]);
+		var row = document.createElement("tr");
+		var cell_problem = document.createElement("td");
+		cell_problem.innerHTML += encoded[i];
+		row.appendChild(cell_problem);
+		var cell_answer = document.createElement("td");
+		cell_answer.innerHTML += "<input type='text'></input>"
+		row.appendChild(cell_answer);
+		var cell_decoded = document.createElement("td");
+		cell_decoded.innerHTML += "<input type='text'></input>"
+		row.appendChild(cell_decoded);
+		table.appendChild(row);
+	}
+
+	var cipher = document.getElementById("cipher");
+	var letters = document.createElement("tr");
+	var numbers = document.createElement("tr");
+	cipher.appendChild(letters);
+	cipher.appendChild(numbers);
+	for (var i=0; i<26; ++i) {
+		var letter = String.fromCharCode(65+i);
+		var letter_cell = document.createElement("td");
+		letter_cell.innerHTML += letter;
+		letters.appendChild(letter_cell);
+
+		var code = codemap.get(letter);
+		var code_cell = document.createElement("td");
+		code_cell.innerHTML += code;
+		numbers.appendChild(code_cell);
+	}
+	
+	document.getElementById("input").style.display = "none";
+	document.getElementById("mult").style.display = "none";
+	document.getElementById("mult_label").style.display = "none";
+	document.getElementById("button").style.display = "none";
+}
+
+
+</script>
+</head>
+<body>
+<form onsubmit="false;" id="form">
+<input type="text" id="input"></input><br>
+<input type="checkbox" id="mult" name="mult" value="mult">
+<label for="mult" id="mult_label"> use multiplication/division</label><br>
+<button onClick="process(); return false;" id="button">encode</button>
+</br>
+</form>
+Cipher:
+<table id="cipher" border=1>
+</table>
+</br>
+Secret message:
+<table id="output" border=2>
+<tr><td>Equation</td><td>Solution</td><td>Decoded letter</td></tr>
+</table>
+</body>
+</html>
