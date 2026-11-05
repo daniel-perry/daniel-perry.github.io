@@ -1,0 +1,52 @@
+---
+import '../styles/site.css';
+import { links } from '../data/profile';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Daniel Perry, Ph.D. — Applied scientist',
+  description = 'Applied science at the intersection of efficient machine learning, production NLP, and AI-agent evaluation.',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page">
+      <header class="site-header">
+        <a class="wordmark" href="/">Daniel Perry<span>, Ph.D.</span></a>
+        <nav aria-label="Main navigation">
+          <a href="/#experience">Experience</a>
+          <a href="/#work">Publications</a>
+          <a href="/research/">Research</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+      </header>
+      <main id="main"><slot /></main>
+      <footer>
+        <p>Daniel Perry, Ph.D.</p>
+        <div class="footer-links">
+          <a href={links.github}>GitHub</a>
+          <a href={links.linkedin}>LinkedIn</a>
+          <a href={links.scholar}>Scholar</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
