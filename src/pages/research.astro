@@ -1,0 +1,91 @@
+---
+import { getCollection, render } from 'astro:content';
+import Page from '../layouts/Page.astro';
+import { links } from '../data/profile';
+
+const entries = (await getCollection('research')).sort((a, b) =>
+  b.data.year - a.data.year || a.data.order - b.data.order);
+const papers = await Promise.all(entries.map(async (entry) => ({
+  entry,
+  ...(await render(entry)),
+})));
+const types = [...new Set(entries.map((entry) => entry.data.type))].sort();
+const topics = [...new Set(entries.map((entry) => entry.data.topic))].sort();
+---
+<Page title="Research — Daniel Perry, Ph.D.">
+  <section class="research-hero">
+    <p class="eyebrow">Research</p>
+    <h1>Research publications</h1>
+    <p class="intro">Efficient language models, practical evaluation, and the mathematical foundations of machine learning.</p>
+    <a class="text-link" href={links.scholar}>Complete Scholar profile <span aria-hidden="true">↗</span></a>
+  </section>
+  <div class="research-filters" hidden>
+    <fieldset>
+      <legend>Document type</legend>
+      <div class="filter-options">
+        <button type="button" data-filter="type" data-value="" aria-pressed="true" aria-controls="research-results">All types</button>
+        {types.map((type) => <button type="button" data-filter="type" data-value={type} aria-pressed="false" aria-controls="research-results">{type}</button>)}
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Topic</legend>
+      <div class="filter-options">
+        <button type="button" data-filter="topic" data-value="" aria-pressed="true" aria-controls="research-results">All topics</button>
+        {topics.map((topic) => <button type="button" data-filter="topic" data-value={topic} aria-pressed="false" aria-controls="research-results">{topic}</button>)}
+      </div>
+    </fieldset>
+    <p id="result-count" role="status" aria-live="polite" aria-atomic="true">{papers.length} publications</p>
+  </div>
+  <div class="research-list" id="research-results">
+    {papers.map(({ entry, Content }) => (
+      <article class="story" data-type={entry.data.type} data-topic={entry.data.topic}>
+        <p class="eyebrow">{entry.data.year} · {entry.data.venue}</p>
+        <ul class="publication-tags" aria-label="Classification">
+          <li>{entry.data.type}</li>
+          <li>{entry.data.topic}</li>
+        </ul>
+        <h2>{entry.data.title}</h2>
+        <Content />
+        <div class="publication-links">
+          {entry.data.url && <a class="text-link" href={entry.data.url}>Read the paper <span aria-hidden="true">↗</span></a>}
+          {entry.data.resources.map((resource) => (
+            <a class="text-link" href={resource.url}>{resource.label} <span aria-hidden="true">↗</span></a>
+          ))}
+        </div>
+      </article>
+    ))}
+    <p id="no-results" hidden>No publications match these filters. Choose another type or topic, or select both “All” options.</p>
+  </div>
+</Page>
+
+<script>
+  const filters = document.querySelector<HTMLElement>('.research-filters');
+  const articles = [...document.querySelectorAll<HTMLElement>('#research-results article')];
+  const count = document.querySelector<HTMLElement>('#result-count');
+  const empty = document.querySelector<HTMLElement>('#no-results');
+  const selected: Record<'type' | 'topic', string> = { type: '', topic: '' };
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('button[data-filter]')];
+
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      const group = button.dataset.filter;
+      if (group !== 'type' && group !== 'topic') throw new Error('Unknown research filter group');
+      selected[group] = button.dataset.value ?? '';
+      for (const option of buttons) {
+        if (option.dataset.filter === group) {
+          option.setAttribute('aria-pressed', String(option === button));
+        }
+      }
+      let visible = 0;
+      for (const article of articles) {
+        const matches = (!selected.type || article.dataset.type === selected.type)
+          && (!selected.topic || article.dataset.topic === selected.topic);
+        article.hidden = !matches;
+        if (matches) visible++;
+      }
+      if (count) count.textContent = `${visible} ${visible === 1 ? 'publication' : 'publications'}`;
+      if (empty) empty.hidden = visible !== 0;
+    });
+  }
+  if (filters) filters.hidden = false;
+</script>

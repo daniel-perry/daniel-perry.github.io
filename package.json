@@ -1,0 +1,19 @@
+{
+  "name": "daniel-perry-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "check": "astro check",
+    "build": "astro build && node scripts/copy-archives.mjs",
+    "preview": "astro preview --host 127.0.0.1",
+    "test": "node --test tests/site.test.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.15.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.3"
+  }
+}
