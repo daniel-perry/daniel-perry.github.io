@@ -1,6 +1,6 @@
-# Website design preview
+# Website
 
-Astro static-output preview for Daniel Perry's professional website.
+Astro static site for Daniel Perry's professional website.
 
 Use Node 22:
 
@@ -26,9 +26,12 @@ explicit legacy archive roots into ignored output and rejects collisions. Tests
 check byte-for-byte preservation of included archives and local links in the new
 pages. Old coursework retains its historical behavior and dependencies.
 
-The manual GitHub Actions workflow builds an artifact only. It has no push
-trigger and no deployment permissions or deployment job. Do not change Pages
-settings or publish this preview before approval.
+The `Build and deploy website` GitHub Actions workflow checks, builds, and tests
+the site, then deploys only `dist/` to GitHub Pages on pushes to `master` or manual
+runs. In Settings > Pages, the build source must be **GitHub Actions**, not
+**Deploy from a branch**. Branch-based publishing serves the historical root
+`index.html` and does not run Astro. There is no need to rename that source file:
+the deployed homepage is Astro's generated `dist/index.html`.
 
 The design and displayed content have been reviewed. The research page combines
 the LinkedIn publication list with the original website's papers, abstracts, and
